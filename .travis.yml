@@ -20,9 +20,11 @@ before_install:
   - ulimit -a
   - mkdir builds
   - pushd builds
+  - pip install --upgrade pip setuptools  # Upgrade pip and setuptools to get ones with `wheel` support
+  - pip --version
   - pip install nose
   - pip install numpy
-  - pip install Cython
+  - time pip install --use-wheel --no-index --find-links=https://github.com/msabramo/cython/releases/tag/0.19.1 Cython
   # mpmath for scipy.special tests
   - pip install mpmath
   # For Python 2.6 we also need argparse
